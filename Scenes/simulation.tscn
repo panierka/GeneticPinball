@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=5 format=3 uid="uid://bvkgbbml1nhs8"]
 
+[ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
 [ext_resource type="PackedScene" uid="uid://lol60knq7ctd" path="res://Scenes/ball.tscn" id="2_la58t"]
+[ext_resource type="Script" path="res://Scripts/Generations/RandomGenerationProvider.cs" id="4_8etlk"]
 
-[node name="Simulation" type="Node2D"]
+[node name="Simulation" type="Node2D" node_paths=PackedStringArray("ballManager", "generationProvider")]
+script = ExtResource("1_h1qxx")
+ballManager = NodePath("BallManager")
+generationProvider = NodePath("BallGenerationProviderNode")
 
 [node name="BallManager" type="Node2D" parent="."]
 position = Vector2(232, 513)
 script = ExtResource("1_regys")
 packedBall = ExtResource("2_la58t")
+
+[node name="BallGenerationProviderNode" type="Node2D" parent="."]
+script = ExtResource("4_8etlk")
+size = 20
