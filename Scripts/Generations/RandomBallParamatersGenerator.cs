@@ -10,8 +10,8 @@ namespace GeneticPinball.Scripts.Generations
 {
 	public static class RandomBallParamatersGenerator
 	{
-		public const float MIN_ANGLE = 10;
-		public const float MAX_ANGLE = 80;
+		public const float MIN_ANGLE = 30;
+		public const float MAX_ANGLE = 85;
 		public const float MIN_INITIAL_VELOCITY = 700;
 		public const float MAX_INITIAL_VELOCITY = 1500;
 		public const float MIN_SIZE = 0.5f;
