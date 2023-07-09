@@ -15,7 +15,7 @@ ballManager = NodePath("BallManager")
 generationProvider = NodePath("BallGenerationProviderNode")
 
 [node name="BallManager" type="Node2D" parent="."]
-position = Vector2(232, 513)
+position = Vector2(56, 744)
 script = ExtResource("1_regys")
 packedBall = ExtResource("2_la58t")
 

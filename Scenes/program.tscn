@@ -5,21 +5,22 @@
 [ext_resource type="Script" path="res://Scripts/Board/Border.cs" id="3_v7ki4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hd7d"]
-size = Vector2(1215, 20)
+size = Vector2(1473.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j21by"]
-size = Vector2(1220, 20)
+size = Vector2(1484, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ykx"]
-size = Vector2(94, 724)
+size = Vector2(94, 880)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on7cp"]
-size = Vector2(64, 725.5)
+size = Vector2(64, 892)
 
 [node name="Program" type="Node2D"]
 
 [node name="Simulation" parent="." instance=ExtResource("1_8w7it")]
 unique_name_in_owner = true
+position = Vector2(-24, 0)
 
 [node name="DebugSimulationLauncher" type="Node" parent="."]
 script = ExtResource("2_m1stt")
@@ -30,28 +31,28 @@ script = ExtResource("2_m1stt")
 script = ExtResource("3_v7ki4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Upper"]
-position = Vector2(578, -31)
+position = Vector2(707.25, -31)
 shape = SubResource("RectangleShape2D_1hd7d")
 
 [node name="Lower" type="Area2D" parent="Borders"]
 script = ExtResource("3_v7ki4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Lower"]
-position = Vector2(578, 683)
+position = Vector2(710, 822)
 shape = SubResource("RectangleShape2D_j21by")
 
 [node name="Left" type="Area2D" parent="Borders"]
 script = ExtResource("3_v7ki4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
-position = Vector2(-57, 330)
+position = Vector2(-57, 408)
 shape = SubResource("RectangleShape2D_l6ykx")
 
 [node name="Right" type="Area2D" parent="Borders"]
 script = ExtResource("3_v7ki4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
-position = Vector2(1195, 330)
+position = Vector2(1459, 408)
 shape = SubResource("RectangleShape2D_on7cp")
 
 [connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]
