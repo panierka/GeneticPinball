@@ -3,6 +3,8 @@ using GeneticPinball.Scripts.Generations;
 using Godot;
 using System;
 
+namespace GeneticPinball.Scripts.Core;
+
 [GlobalClass]
 public partial class SimulationController : Node2D
 {

@@ -22,7 +22,7 @@ public partial class BallManager : Node2D
         get => currentAmountOfBalls; 
         set
         {       
-            currentAmountOfBalls = value;
+            currentAmountOfBalls = Mathf.Max(0, value);
             EmitSignal(
                 SignalName.OnCurrentAmountOfBallsChanged, 
                 CurrentAmountOfBalls
@@ -33,6 +33,7 @@ public partial class BallManager : Node2D
     public void SpawnBalls(IEnumerable<BallParameters> ballDatas)
     {
         ballDatas.ToList().ForEach(SpawnBall);
+        CurrentAmountOfBalls += ballDatas.Count();
     }
     
     private void SpawnBall(BallParameters parameters)
@@ -42,8 +43,6 @@ public partial class BallManager : Node2D
         AddChild(ball);
         ball.Initialize(parameters);
         ball.OnBallSimulationFinished += RegisterBallFinish;
-
-        CurrentAmountOfBalls++;
     }
 
     private void RegisterBallFinish(int ballScore)
