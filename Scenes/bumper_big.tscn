@@ -7,7 +7,7 @@
 bumpingPower = 950.0
 
 [node name="Sprite2D" parent="Area2D" index="0"]
-self_modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.670588, 0.670588, 0.670588, 1)
 
 [node name="CollisionShape2D" parent="Area2D" index="1"]
 shape = ExtResource("2_j05le")

@@ -1,4 +1,5 @@
 using GeneticPinball.Scripts.Utility;
+using GeneticPinball.Scripts.Visual;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -32,17 +33,32 @@ public partial class BallManager : Node2D
 
 	public void SpawnBalls(IEnumerable<BallParameters> ballDatas)
 	{
-		ballDatas.ToList().ForEach(SpawnBall);
-		CurrentAmountOfBalls += ballDatas.Count();
+		var size = ballDatas.Count();
+		ballDatas
+			.Zip(Enumerable.Range(0, size))
+			.Select(x => new
+			{
+				Index = x.Second,
+				Data = x.First,
+			})
+			.ToList()
+			.ForEach(x =>
+			{
+				var ball = SpawnBall(x.Index, x.Data);
+				ball.Modulate = ColorProvider.GetColorFromId(x.Index, size);
+            });
+
+		CurrentAmountOfBalls += size;
 	}
 	
-	private void SpawnBall(BallParameters parameters)
+	private Ball SpawnBall(int id, BallParameters parameters)
 	{
 		var ball = packedBall.Instantiate<Ball>();
 
 		AddChild(ball);
-		ball.Initialize(parameters);
+		ball.Initialize(id, parameters);
 		ball.OnBallSimulationFinished += RegisterBallFinish;
+		return ball;
 	}
 
 	private void RegisterBallFinish(int ballScore)

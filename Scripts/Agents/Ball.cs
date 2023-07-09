@@ -13,6 +13,7 @@ public partial class Ball : Node2D
 	public delegate void OnBallSimulationFinishedEventHandler(int score);
 
 	private int score;
+	private int id;
     
     public int Score 
 	{ 
@@ -23,10 +24,12 @@ public partial class Ball : Node2D
 		}
 	}
 
-    public void Initialize(BallParameters parameters)
+    public void Initialize(int id, BallParameters parameters)
 	{
+		this.id = id;
+
         var direction = parameters.Direction.Normalized();
-        var initialVelocity = direction * parameters.InitialVelocity;
+		var initialVelocity = direction * parameters.InitialVelocity;
 
 		rigidBody
 			.GetChildren()
