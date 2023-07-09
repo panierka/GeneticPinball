@@ -12,6 +12,24 @@ public partial class BallManager : Node2D
     [Export]
     private PackedScene packedBall;
 
+    [Signal]
+    public delegate void OnCurrentAmountOfBallsChangedEventHandler(int amount);
+
+    private int currentAmountOfBalls;
+    
+    public int CurrentAmountOfBalls 
+    { 
+        get => currentAmountOfBalls; 
+        set
+        {       
+            currentAmountOfBalls = value;
+            EmitSignal(
+                SignalName.OnCurrentAmountOfBallsChanged, 
+                CurrentAmountOfBalls
+            );
+        } 
+    }
+
     public void SpawnBalls(IEnumerable<BallParameters> ballDatas)
     {
         ballDatas.ToList().ForEach(SpawnBall);
@@ -23,5 +41,13 @@ public partial class BallManager : Node2D
 
         AddChild(ball);
         ball.Initialize(parameters);
+        ball.OnBallSimulationFinished += RegisterBallFinish;
+
+        CurrentAmountOfBalls++;
+    }
+
+    private void RegisterBallFinish(int ballScore)
+    {
+        CurrentAmountOfBalls--;
     }
 }
