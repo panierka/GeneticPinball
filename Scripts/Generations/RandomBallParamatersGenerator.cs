@@ -12,12 +12,12 @@ namespace GeneticPinball.Scripts.Generations
     {
         public static BallParameters Generate()
         {
-            var x = Randomizer.Range(2.5f, 4);
-            var y = Randomizer.Range(-4.5f, -3f);
-            var v0 = Randomizer.Range(1000, 1200);
+            var x = Randomizer.Range(0.1f, 10f);
+            var y = Randomizer.Range(-5f, -3.5f);
+            var v0 = Randomizer.Range(900, 2500);
             var size = Randomizer.Range(0.5f, 2);
-            var g = Randomizer.Range(0.1f, 1f);
-            var m = Randomizer.Range(0.2f, 10f);
+            var g = Randomizer.Range(0.1f, 3f);
+            var m = Randomizer.Range(0.2f, 2f);
 
             return new()
             {
