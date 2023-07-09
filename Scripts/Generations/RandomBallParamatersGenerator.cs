@@ -12,20 +12,19 @@ namespace GeneticPinball.Scripts.Generations
     {
         public static BallParameters Generate()
         {
-            var x = Randomizer.Range(0, 1);
-            var y = Randomizer.Range(-1, -0.5f);
-            var v0 = Randomizer.Range(600, 1000);
+            var x = Randomizer.Range(2.5f, 4);
+            var y = Randomizer.Range(-4.5f, -3f);
+            var v0 = Randomizer.Range(1000, 1200);
             var size = Randomizer.Range(0.5f, 2);
-            var g = Randomizer.Range(0.2f, 2f);
-            var m = Randomizer.Range(0.2f, 10f);
+            var g = Randomizer.Range(0.1f, 1f);
+            //var m = 5f;//Randomizer.Range(0.2f, 10f);
 
             return new()
             {
                 Direction = new(x, y),
                 InitialVelocity = v0,
                 SizeScale = size,
-                GravityScale = g,
-                Mass = m
+                GravityScale = g
             };
         }
     }
