@@ -35,8 +35,8 @@ public partial class Ball : Node2D
 			.ToList()
 			.ForEach(x => x.Scale *= parameters.SizeScale);
 
-		//rigidBody.Mass = parameters.Mass;
-		//rigidBody.GravityScale = parameters.GravityScale;
+		rigidBody.Mass = parameters.Mass;
+		rigidBody.GravityScale = parameters.GravityScale;
         
         Launch(initialVelocity);
 	}
