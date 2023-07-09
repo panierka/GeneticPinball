@@ -5,20 +5,18 @@ namespace GeneticPinball.Scripts.Agents;
 
 public partial class Ball : Node2D
 {
-	private Vector2 initialVelocity;
-
 	[Export]
 	private RigidBody2D rigidBody;
 
     public void Initialize(BallParameters parameters)
 	{
         var direction = parameters.Direction.Normalized();
-        initialVelocity = direction * parameters.InitialVelocity;
+        var initialVelocity = direction * parameters.InitialVelocity;
 
-        Launch();
+        Launch(initialVelocity);
 	}
 
-	private void Launch()
+	private void Launch(Vector2 initialVelocity)
 	{
 		rigidBody.ApplyImpulse(initialVelocity);
     }
