@@ -14,14 +14,14 @@ public partial class SimulationController : Node2D
 	[Export]
 	private BallGenerationProviderNode generationProvider;
 
-    public override void _Ready()
-    {
-        StartNextIteration();
-    }
+	public override void _Ready()
+	{
+		StartNextIteration();
+	}
 
-    public void StartNextIteration()
-    {
-        var ballDatasGeneration = generationProvider.GetGeneration();
-        ballManager.SpawnBalls(ballDatasGeneration);
-    }
+	public void StartNextIteration()
+	{
+		var ballDatasGeneration = generationProvider.GetGeneration();
+		ballManager.SpawnBalls(ballDatasGeneration);
+	}
 }

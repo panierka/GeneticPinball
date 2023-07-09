@@ -13,8 +13,8 @@ public partial class Ball : Node2D
 	public delegate void OnBallSimulationFinishedEventHandler(int score);
 
 	private int score;
-    
-    public int Score 
+	
+	public int Score 
 	{ 
 		get => score;
 		private set
@@ -23,10 +23,10 @@ public partial class Ball : Node2D
 		}
 	}
 
-    public void Initialize(BallParameters parameters)
+	public void Initialize(BallParameters parameters)
 	{
-        var direction = parameters.Direction.Normalized();
-        var initialVelocity = direction * parameters.InitialVelocity;
+		var direction = parameters.Direction.Normalized();
+		var initialVelocity = direction * parameters.InitialVelocity;
 
 		rigidBody
 			.GetChildren()
@@ -37,14 +37,14 @@ public partial class Ball : Node2D
 
 		rigidBody.Mass = parameters.Mass;
 		rigidBody.GravityScale = parameters.GravityScale;
-        
-        Launch(initialVelocity);
+		
+		Launch(initialVelocity);
 	}
 
-    private void Launch(Vector2 initialVelocity)
+	private void Launch(Vector2 initialVelocity)
 	{
 		rigidBody.ApplyImpulse(initialVelocity);
-    }
+	}
 
 	public void AddScore(int amount)
 	{
@@ -54,6 +54,6 @@ public partial class Ball : Node2D
 	public void FinishSimulation()
 	{
 		EmitSignal(SignalName.OnBallSimulationFinished, score);
-        QueueFree();
+		QueueFree();
 	}
 }
