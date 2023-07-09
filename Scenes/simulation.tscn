@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvkgbbml1nhs8"]
+
+[ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
+[ext_resource type="PackedScene" uid="uid://lol60knq7ctd" path="res://Scenes/ball.tscn" id="2_la58t"]
+
+[node name="Simulation" type="Node2D"]
+
+[node name="BallManager" type="Node2D" parent="."]
+position = Vector2(232, 513)
+script = ExtResource("1_regys")
+packedBall = ExtResource("2_la58t")
