@@ -14,7 +14,7 @@ namespace GeneticPinball.Scripts.Generations
         {
             var x = Randomizer.Range(0.1f, 10f);
             var y = Randomizer.Range(-5f, -3.5f);
-            var v0 = Randomizer.Range(900, 2500);
+            var v0 = Randomizer.Range(700, 1500);
             var size = Randomizer.Range(0.5f, 2);
             var g = Randomizer.Range(0.1f, 3f);
             var m = Randomizer.Range(0.2f, 2f);
