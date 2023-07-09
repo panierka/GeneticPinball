@@ -20,7 +20,7 @@ size = Vector2(64, 892)
 
 [node name="Simulation" parent="." instance=ExtResource("1_8w7it")]
 unique_name_in_owner = true
-position = Vector2(-24, 0)
+position = Vector2(8, -14)
 
 [node name="DebugSimulationLauncher" type="Node" parent="."]
 script = ExtResource("2_m1stt")
