@@ -45,12 +45,111 @@ script = ExtResource("5_lxm4j")
 [node name="Board" type="Node2D" parent="."]
 
 [node name="BumperBig" parent="Board" instance=ExtResource("6_nrc0a")]
-position = Vector2(696, 600)
+position = Vector2(595, 151)
 
-[node name="BumperMedium" parent="Board" instance=ExtResource("7_1cows")]
-position = Vector2(440, 472)
+[node name="BumperBig2" parent="Board" instance=ExtResource("6_nrc0a")]
+position = Vector2(1070, 156)
+
+[node name="BumperBig3" parent="Board" instance=ExtResource("6_nrc0a")]
+position = Vector2(1169, 551)
+
+[node name="BumperBig4" parent="Board" instance=ExtResource("6_nrc0a")]
+position = Vector2(753, 615)
+
+[node name="BumperBig5" parent="Board" instance=ExtResource("6_nrc0a")]
+position = Vector2(733, 346)
+
+[node name="BumperMedium2" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(541, 618)
+
+[node name="BumperMedium3" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(530, 359)
+
+[node name="BumperMedium5" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(1098, 305)
+
+[node name="BumperMedium6" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(930, 443)
+
+[node name="BumperMedium7" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(351, 144)
+
+[node name="BumperMedium8" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(175, 294)
+
+[node name="BumperMedium9" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(333, 322)
+
+[node name="BumperMedium10" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(472, 240)
+
+[node name="BumperMedium11" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(695, 495)
+
+[node name="BumperMedium12" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(916, 235)
+
+[node name="BumperMedium13" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(1100, 450)
+
+[node name="BumperMedium14" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(1043, 665)
 
 [node name="BumperSmall" parent="Board" instance=ExtResource("8_p7lgt")]
-position = Vector2(496, 224)
+position = Vector2(657, 417)
+
+[node name="BumperSmall2" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(777, 254)
+
+[node name="BumperSmall7" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(900, 123)
+
+[node name="BumperSmall8" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(387, 491)
+
+[node name="BumperSmall9" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(926, 689)
+
+[node name="BumperSmall10" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(208, 484)
+
+[node name="BumperSmall11" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(304, 611)
+
+[node name="BumperSmall12" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(253, 550)
+
+[node name="BumperSmall3" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(844, 505)
+
+[node name="BumperSmall4" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(1023, 350)
+
+[node name="BumperSmall5" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(1023, 548)
+
+[node name="BumperSmall6" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(1159, 377)
+
+[node name="BumperSmall13" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(865, 354)
+
+[node name="BumperSmall14" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(721, 133)
+
+[node name="BumperSmall15" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(628, 289)
+
+[node name="BumperSmall16" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(492, 464)
+
+[node name="BumperSmall17" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(619, 574)
+
+[node name="BumperSmall18" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(268, 209)
+
+[node name="BumperSmall19" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(1178, 201)
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]

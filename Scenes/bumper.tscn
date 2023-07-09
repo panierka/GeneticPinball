@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnsjvtlgw5r7d"]
+[gd_scene load_steps=5 format=3 uid="uid://cnsjvtlgw5r7d"]
 
 [ext_resource type="Script" path="res://Scripts/Board/Bumper.cs" id="1_yawou"]
 [ext_resource type="Texture2D" uid="uid://cuwv2yxg4ggar" path="res://Textures/circle.png" id="2_u4y6f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7fwn"]
+radius = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oesvh"]
+radius = 38.0
 
 [node name="Bumper" type="Node2D"]
 script = ExtResource("1_yawou")
@@ -12,14 +18,17 @@ addedScore = 10
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+self_modulate = Color(0.815686, 0, 0, 1)
 scale = Vector2(0.386497, 0.386497)
 texture = ExtResource("2_u4y6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_q7fwn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_oesvh")
 
 [connection signal="body_entered" from="Area2D" to="." method="Bump"]
