@@ -12,5 +12,11 @@ namespace GeneticPinball.Scripts.Agents
         public Vector2 Direction { get; init; }
 
         public float InitialVelocity { get; init; }
+
+        public float Mass { get; init; }
+
+        public float GravityScale { get; init; }
+
+        public float SizeScale { get; init; }
     }
 }

@@ -27,11 +27,17 @@ namespace GeneticPinball.Scripts.Generations
             var x = Randomizer.Range(0, 1);
             var y = Randomizer.Range(-1, -0.5f);
             var v0 = Randomizer.Range(600, 1000);
-            
+            var size = Randomizer.Range(0.5f, 2);
+            var g = Randomizer.Range(0.2f, 2f);
+            var m = Randomizer.Range(0.2f, 10f);
+
             return new()
             {
                 Direction = new(x, y),
-                InitialVelocity = v0
+                InitialVelocity = v0,
+                SizeScale = size,
+                GravityScale = g,
+                Mass = m
             };
         }
     }
