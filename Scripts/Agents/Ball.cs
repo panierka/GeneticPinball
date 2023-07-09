@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 namespace GeneticPinball.Scripts.Agents;
 
@@ -16,7 +17,7 @@ public partial class Ball : Node2D
     public int Score 
 	{ 
 		get => score;
-		set
+		private set
 		{
 			score = value;
 		}
@@ -27,7 +28,12 @@ public partial class Ball : Node2D
         var direction = parameters.Direction.Normalized();
         var initialVelocity = direction * parameters.InitialVelocity;
 
-		Scale *= parameters.SizeScale;
+		rigidBody
+			.GetChildren()
+			.Cast<Node2D>()
+			.Where(x => x is { })
+			.ToList()
+			.ForEach(x => x.Scale *= parameters.SizeScale);
 
 		rigidBody.Mass = parameters.Mass;
 		rigidBody.GravityScale = parameters.GravityScale;
@@ -35,12 +41,12 @@ public partial class Ball : Node2D
         Launch(initialVelocity);
 	}
 
-	private void Launch(Vector2 initialVelocity)
+    private void Launch(Vector2 initialVelocity)
 	{
 		rigidBody.ApplyImpulse(initialVelocity);
     }
 
-	private void AddScore(int amount)
+	public void AddScore(int amount)
 	{
 		Score += amount;
 	}
