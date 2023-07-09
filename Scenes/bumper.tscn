@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnsjvtlgw5r7d"]
+
+[ext_resource type="Script" path="res://Scripts/Agents/Bumper.cs" id="1_yawou"]
+[ext_resource type="Texture2D" uid="uid://bo1li1j6d7t34" path="res://icon.svg" id="2_2dmbt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja06t"]
+radius = 92.0489
+
+[node name="Bumper" type="Node2D"]
+script = ExtResource("1_yawou")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(611, -260)
+texture = ExtResource("2_2dmbt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(610, -255)
+shape = SubResource("CircleShape2D_ja06t")
