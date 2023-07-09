@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=10 format=3 uid="uid://bvkgbbml1nhs8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
 [ext_resource type="PackedScene" uid="uid://lol60knq7ctd" path="res://Scenes/ball.tscn" id="2_la58t"]
 [ext_resource type="Script" path="res://Scripts/Generations/RandomGenerationProvider.cs" id="4_8etlk"]
 [ext_resource type="Script" path="res://Scripts/Visual/ball_amount_ui.gd" id="5_lxm4j"]
-[ext_resource type="PackedScene" uid="uid://cnsjvtlgw5r7d" path="res://Scenes/bumper.tscn" id="6_6wj3x"]
+[ext_resource type="PackedScene" uid="uid://cggjr03n541bc" path="res://Scenes/bumper_big.tscn" id="6_nrc0a"]
+[ext_resource type="PackedScene" uid="uid://inhschju0s3y" path="res://Scenes/bumper_medium.tscn" id="7_1cows"]
+[ext_resource type="PackedScene" uid="uid://d2arhr5ayh046" path="res://Scenes/bumper_small.tscn" id="8_p7lgt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ruop"]
 font_size = 24
@@ -42,61 +44,13 @@ script = ExtResource("5_lxm4j")
 
 [node name="Board" type="Node2D" parent="."]
 
-[node name="Bumper" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(608, 632)
+[node name="BumperBig" parent="Board" instance=ExtResource("6_nrc0a")]
+position = Vector2(696, 600)
 
-[node name="Bumper2" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(936, 440)
+[node name="BumperMedium" parent="Board" instance=ExtResource("7_1cows")]
+position = Vector2(440, 472)
 
-[node name="Bumper3" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(728, 472)
-
-[node name="Bumper4" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(832, 656)
-
-[node name="Bumper5" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(464, 472)
-
-[node name="Bumper6" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(568, 304)
-
-[node name="Bumper7" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(808, 288)
-
-[node name="Bumper8" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(680, 192)
-
-[node name="Bumper9" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(360, 336)
-
-[node name="Bumper10" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(416, 160)
-
-[node name="Bumper11" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(288, 528)
-
-[node name="Bumper12" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(416, 656)
-
-[node name="Bumper13" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(696, 720)
-
-[node name="Bumper14" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(1000, 584)
-
-[node name="Bumper15" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(976, 264)
-
-[node name="Bumper16" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(1096, 360)
-
-[node name="Bumper17" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(832, 136)
-
-[node name="Bumper18" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(560, 104)
-
-[node name="Bumper21" parent="Board" instance=ExtResource("6_6wj3x")]
-position = Vector2(976, 120)
+[node name="BumperSmall" parent="Board" instance=ExtResource("8_p7lgt")]
+position = Vector2(496, 224)
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]

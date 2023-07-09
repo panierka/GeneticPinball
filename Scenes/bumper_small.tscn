@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2arhr5ayh046"]
+
+[ext_resource type="PackedScene" uid="uid://cnsjvtlgw5r7d" path="res://Scenes/bumper.tscn" id="1_0if88"]
+[ext_resource type="Shape2D" uid="uid://0nfol2eklcgj" path="res://Shapes/bumper_small_shape.tres" id="2_oofg2"]
+
+[node name="BumperSmall" instance=ExtResource("1_0if88")]
+bumpingPower = 300.0
+
+[node name="Sprite2D" parent="Area2D" index="0"]
+self_modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.0901233, 0.0901233)
+
+[node name="CollisionShape2D" parent="Area2D" index="1"]
+shape = ExtResource("2_oofg2")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = ExtResource("2_oofg2")
