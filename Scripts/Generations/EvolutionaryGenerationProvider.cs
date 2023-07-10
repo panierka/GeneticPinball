@@ -78,11 +78,26 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
         var rankedAgents = parameters
             .Zip(scores)
             .Select(x => new BallData { Parameters = x.First, Score = x.Second });
+        
+        var new_generation = new List<BallParameters>();
 
-        var pair = Roulette(rankedAgents, 2)
-            .Select(x => x.Parameters);
+        for(int i = 0; i < amount; i++)
+        {
+            var pair = Roulette(rankedAgents, 2)
+                .Select(x => x.Parameters);
+            
+            new_generation.Add(parameters.Select(x => x with
+            {
+                Angle = x[0].Angle + Randomizer.Normal() * (x[1].Angle - x[0].Angle),
+                InitialVelocity = x[0].InitialVelocity + Randomizer.Normal() * (x[1].InitialVelocity - x[0].InitialVelocity),
+                Mass = x[0].Mass + Randomizer.Normal() * (x[1].Mass - x[0].Mass),
+                GravityScale = x[0].GravityScale + Randomizer.Normal() * (x[1].GravityScale - x[0].GravityScale),
+                SizeScale = x[0].SizeScale + Randomizer.Normal() * (x[1].SizeScale - x[0].SizeScale),
+            })
+            );
+        }
 
-        throw new NotImplementedException();
+        return new_generation;
     }
 
     private static IEnumerable<BallData> Roulette(IEnumerable<BallData> pool, int amount)
