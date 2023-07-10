@@ -91,11 +91,11 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
 
             var newAgent = new BallParameters()
             {
-                Angle = parent1.Angle + Randomizer.Normal() * (parent2.Angle - parent1.Angle),
-                InitialVelocity = parent1.InitialVelocity + Randomizer.Normal() * (parent2.InitialVelocity - parent1.InitialVelocity),
-                Mass = parent1.Mass + Randomizer.Normal() * (parent2.Mass - parent1.Mass),
-                GravityScale = parent1.GravityScale + Randomizer.Normal() * (parent2.GravityScale - parent1.GravityScale),
-                SizeScale = parent1.SizeScale + Randomizer.Normal() * (parent2.SizeScale - parent1.SizeScale),
+                Angle = Mathf.Clamp(parent1.Angle + Randomizer.Normal() * (parent2.Angle - parent1.Angle), RandomBallParamatersGenerator.MIN_ANGLE, RandomBallParamatersGenerator.MAX_ANGLE),
+                InitialVelocity = Mathf.Clamp(parent1.InitialVelocity + Randomizer.Normal() * (parent2.InitialVelocity - parent1.InitialVelocity), RandomBallParamatersGenerator.MIN_INITIAL_VELOCITY, RandomBallParamatersGenerator.MAX_INITIAL_VELOCITY),
+                Mass = Mathf.Clamp(parent1.Mass + Randomizer.Normal() * (parent2.Mass - parent1.Mass), RandomBallParamatersGenerator.MIN_MASS, RandomBallParamatersGenerator.MAX_MASS),
+                GravityScale = Mathf.Clamp(parent1.GravityScale + Randomizer.Normal() * (parent2.GravityScale - parent1.GravityScale), RandomBallParamatersGenerator.MIN_GRAVITY, RandomBallParamatersGenerator.MAX_GRAVITY),
+                SizeScale = Mathf.Clamp(parent1.SizeScale + Randomizer.Normal() * (parent2.SizeScale - parent1.SizeScale), RandomBallParamatersGenerator.MIN_SIZE, RandomBallParamatersGenerator.MAX_SIZE),
             };
 
             newGeneration.Add(newAgent);
