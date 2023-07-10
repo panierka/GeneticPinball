@@ -21,11 +21,13 @@ disabledBackgroundColor = Color(0.160784, 0.160784, 0.160784, 1)
 disabledTextColor = Color(0.337255, 0.337255, 0.337255, 1)
 
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 232.0
 offset_bottom = 24.0
 color = Color(0.239216, 0.239216, 0.239216, 1)
 
 [node name="Color" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 

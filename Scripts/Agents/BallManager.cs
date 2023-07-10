@@ -39,7 +39,6 @@ public partial class BallManager : Node2D
 	{
         var size = ballDatas.Count();
 
-		GD.Print(string.Join(", ", scores));
 		scores = new(Enumerable.Repeat(0, size));
         BallsUiController.Instance.Clear();
 

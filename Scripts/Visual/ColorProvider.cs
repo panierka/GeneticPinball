@@ -8,7 +8,9 @@ public static class ColorProvider
     public static Color GetColorFromId(int id, int ballCount)
     {
         var hue = 360f * (id - 1) / ballCount;
-        return HsvToRgb(hue, 1, 1);
+        var color = HsvToRgb(hue, 1, 1);
+
+        return color;
     }
     
     private static Color HsvToRgb(float h, float s, float v)

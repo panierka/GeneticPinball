@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=18 format=3 uid="uid://bvkgbbml1nhs8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2arhr5ayh046" path="res://Scenes/bumper_small.tscn" id="8_p7lgt"]
 [ext_resource type="Script" path="res://Scripts/Visual/BallsUiController.cs" id="10_iusdq"]
 [ext_resource type="PackedScene" uid="uid://b0htvgoahlmmp" path="res://Scenes/ball_profile_ui.tscn" id="11_7lpsd"]
+[ext_resource type="PackedScene" uid="uid://ddff1cm2866aw" path="res://Scenes/extremum_ui.tscn" id="12_i50qs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dgmu"]
 size = Vector2(1896, 547)
@@ -40,8 +41,7 @@ packedBall = ExtResource("2_la58t")
 [node name="BallGenerationProviderNode" type="Node2D" parent="."]
 script = ExtResource("4_2wpdq")
 size = 16
-MutationProbability = 0.2
-EliteClonesAmount = 3
+MutationProbability = 0.15
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(-152, -40)
@@ -338,6 +338,13 @@ script = ExtResource("10_iusdq")
 packedBallProfileUi = ExtResource("11_7lpsd")
 verticalOffset = 16
 distanceBetweenProfileUis = 32
+
+[node name="extremum_ui" parent="UI" instance=ExtResource("12_i50qs")]
+layout_mode = 1
+offset_left = 1192.0
+offset_top = 704.0
+offset_right = 1192.0
+offset_bottom = 704.0
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]
 [connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]

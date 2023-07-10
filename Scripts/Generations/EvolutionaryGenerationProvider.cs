@@ -63,11 +63,35 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
 
                 return x with
                 {
-                    Angle = x.Angle + Randomizer.Normal(),
-                    InitialVelocity = x.InitialVelocity + Randomizer.Normal(),
-                    Mass = x.Mass + Randomizer.Normal(),
-                    GravityScale = x.GravityScale + Randomizer.Normal(),
-                    SizeScale = x.SizeScale + Randomizer.Normal(),
+                    Angle = Mathf.Clamp(
+                        x.Angle + Randomizer.Normal(), 
+                        RandomBallParamatersGenerator.MIN_ANGLE, 
+                        RandomBallParamatersGenerator.MAX_ANGLE
+                    ),
+
+                    InitialVelocity = Mathf.Clamp(
+                        x.InitialVelocity + Randomizer.Normal(), 
+                        RandomBallParamatersGenerator.MIN_INITIAL_VELOCITY, 
+                        RandomBallParamatersGenerator.MAX_INITIAL_VELOCITY
+                    ),
+                    
+                    Mass = Mathf.Clamp(
+                        x.Mass + Randomizer.Normal(), 
+                        RandomBallParamatersGenerator.MIN_MASS, 
+                        RandomBallParamatersGenerator.MAX_MASS
+                    ),
+                    
+                    GravityScale = Mathf.Clamp(
+                        x.GravityScale + Randomizer.Normal(), 
+                        RandomBallParamatersGenerator.MIN_GRAVITY, 
+                        RandomBallParamatersGenerator.MAX_GRAVITY
+                    ),
+                    
+                    SizeScale = Mathf.Clamp(
+                        x.SizeScale + Randomizer.Normal(), 
+                        RandomBallParamatersGenerator.MIN_SIZE, 
+                        RandomBallParamatersGenerator.MAX_SIZE
+                    ),
                 };
             })
             .ToList();
