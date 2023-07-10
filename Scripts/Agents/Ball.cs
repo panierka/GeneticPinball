@@ -9,7 +9,10 @@ public partial class Ball : Node2D
 	[Export]
 	private RigidBody2D rigidBody;
 
-	[Signal]
+    [Signal]
+    public delegate void OnScoreChangedEventHandler(int score);
+
+    [Signal]
 	public delegate void OnBallSimulationFinishedEventHandler(int score);
 
 	private int score;
@@ -21,6 +24,7 @@ public partial class Ball : Node2D
 		private set
 		{
 			score = value;
+			EmitSignal(SignalName.OnScoreChanged, Score);
 		}
 	}
 
@@ -56,7 +60,7 @@ public partial class Ball : Node2D
 
 	public void FinishSimulation()
 	{
-		EmitSignal(SignalName.OnBallSimulationFinished, score);
+		EmitSignal(SignalName.OnBallSimulationFinished, Score);
         QueueFree();
 	}
 }

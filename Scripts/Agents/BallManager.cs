@@ -33,9 +33,11 @@ public partial class BallManager : Node2D
 
 	public void SpawnBalls(IEnumerable<BallParameters> ballDatas)
 	{
+		BallsUiController.Instance.Clear();
+
 		var size = ballDatas.Count();
 		ballDatas
-			.Zip(Enumerable.Range(0, size))
+			.Zip(Enumerable.Range(1, size))
 			.Select(x => new
 			{
 				Index = x.Second,
@@ -45,7 +47,18 @@ public partial class BallManager : Node2D
 			.ForEach(x =>
 			{
 				var ball = SpawnBall(x.Index, x.Data);
-				ball.Modulate = ColorProvider.GetColorFromId(x.Index, size);
+				var color = ColorProvider.GetColorFromId(x.Index, size);
+
+				ball.Modulate = color;
+
+				var profile = new BallProfile()
+				{
+					Id = x.Index,
+					Parameters = x.Data,
+					Color = color
+				};
+
+                BallsUiController.Instance.RegisterBallProfile(ball, profile);
             });
 
 		CurrentAmountOfBalls += size;

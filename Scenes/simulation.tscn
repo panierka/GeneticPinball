@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=17 format=3 uid="uid://bvkgbbml1nhs8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://inhschju0s3y" path="res://Scenes/bumper_medium.tscn" id="7_1cows"]
 [ext_resource type="Script" path="res://Scripts/Board/Border.cs" id="8_hvqpb"]
 [ext_resource type="PackedScene" uid="uid://d2arhr5ayh046" path="res://Scenes/bumper_small.tscn" id="8_p7lgt"]
+[ext_resource type="Script" path="res://Scripts/Visual/BallsUiController.cs" id="10_iusdq"]
+[ext_resource type="PackedScene" uid="uid://b0htvgoahlmmp" path="res://Scenes/ball_profile_ui.tscn" id="11_7lpsd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dgmu"]
 size = Vector2(1473.5, 20)
@@ -323,6 +325,17 @@ offset_bottom = 69.0
 text = "BALLS LEFT:"
 label_settings = SubResource("LabelSettings_7ruop")
 script = ExtResource("5_lxm4j")
+
+[node name="BallsUI" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 1256.0
+offset_top = 104.0
+offset_right = 1296.0
+offset_bottom = 144.0
+script = ExtResource("10_iusdq")
+packedBallProfileUi = ExtResource("11_7lpsd")
+verticalOffset = 16
+distanceBetweenProfileUis = 32
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]
 [connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]
