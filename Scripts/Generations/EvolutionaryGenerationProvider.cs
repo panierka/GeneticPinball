@@ -51,11 +51,16 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
         return currentGeneration;
     }
 
-    private static List<BallParameters> Mutate(List<BallParameters> parameters)
+    private List<BallParameters> Mutate(List<BallParameters> parameters)
     {
         return new List<BallParameters>(parameters)
             .Select(x =>
             {
+                if (!Randomizer.Chance(MutationProbability))
+                {
+                    return x;
+                }
+
                 return x with
                 {
                     Angle = x.Angle + Randomizer.Normal(),
@@ -70,6 +75,27 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
 
     private static List<BallParameters> Cross(List<BallParameters> parameters, List<int> scores, int amount)
     {
+        var rankedAgents = parameters
+            .Zip(scores)
+            .Select(x => new BallData { Parameters = x.First, Score = x.Second });
+
+        var pair = Roulette(rankedAgents, 2)
+            .Select(x => x.Parameters);
+
         throw new NotImplementedException();
+    }
+
+    private static IEnumerable<BallData> Roulette(IEnumerable<BallData> pool, int amount)
+    {
+        return pool
+            .OrderByDescending(x => x.Score * Randomizer.Range(0, 1))
+            .Take(2);
+    }
+
+    private readonly struct BallData
+    {
+        public BallParameters Parameters { get; init; }
+
+        public int Score { get; init; }
     }
 }
