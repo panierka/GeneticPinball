@@ -9,6 +9,6 @@ namespace GeneticPinball.Scripts.Generations
 {
 	public interface IGenerationProvider<T>
 	{
-		public IEnumerable<T> GetGeneration();
+		public List<T> GetGeneration(List<float> scores);
 	}
 }

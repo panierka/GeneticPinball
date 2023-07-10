@@ -21,5 +21,15 @@ namespace GeneticPinball.Scripts.Utility
         {
             return generator.RandfRange(lower, upper);
         }
+
+        public static bool Chance(float successPercentage)
+        {
+            return generator.Randf() <= successPercentage;
+        }
+
+        public static float Normal(float mean = 0, float deviation = 1)
+        {
+            return generator.Randfn(mean, deviation);
+        }
     }
 }

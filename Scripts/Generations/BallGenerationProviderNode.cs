@@ -11,6 +11,6 @@ namespace GeneticPinball.Scripts.Generations
 	[GlobalClass]
 	public abstract partial class BallGenerationProviderNode : Node2D, IGenerationProvider<BallParameters>
 	{
-		public abstract IEnumerable<BallParameters> GetGeneration();
+		public abstract List<BallParameters> GetGeneration(List<float> scores);
 	}
 }

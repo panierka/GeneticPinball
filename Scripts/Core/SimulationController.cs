@@ -21,7 +21,7 @@ public partial class SimulationController : Node2D
 
 	public void StartNextIteration()
 	{
-		var ballDatasGeneration = generationProvider.GetGeneration();
+		var ballDatasGeneration = generationProvider.GetGeneration(null);
 		ballManager.SpawnBalls(ballDatasGeneration);
 	}
 }

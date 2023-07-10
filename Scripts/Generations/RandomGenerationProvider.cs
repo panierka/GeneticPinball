@@ -15,11 +15,12 @@ namespace GeneticPinball.Scripts.Generations
 		[Export]
 		private int size;
 
-		public override IEnumerable<BallParameters> GetGeneration()
+		public override List<BallParameters> GetGeneration(List<float> _)
 		{
 			return Enumerable
 				.Repeat(0, size)
-				.Select(_ => RandomBallParamatersGenerator.Generate());
+				.Select(_ => RandomBallParamatersGenerator.Generate())
+				.ToList();
 		}
 	}
 }
