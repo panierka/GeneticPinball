@@ -79,25 +79,29 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
             .Zip(scores)
             .Select(x => new BallData { Parameters = x.First, Score = x.Second });
         
-        var new_generation = new List<BallParameters>();
+        var newGeneration = new List<BallParameters>();
 
         for(int i = 0; i < amount; i++)
         {
             var pair = Roulette(rankedAgents, 2)
                 .Select(x => x.Parameters);
-            
-            new_generation.Add(parameters.Select(x => x with
+
+            var parent1 = pair.ElementAt(0);
+            var parent2 = pair.ElementAt(1);
+
+            var newAgent = new BallParameters()
             {
-                Angle = x[0].Angle + Randomizer.Normal() * (x[1].Angle - x[0].Angle),
-                InitialVelocity = x[0].InitialVelocity + Randomizer.Normal() * (x[1].InitialVelocity - x[0].InitialVelocity),
-                Mass = x[0].Mass + Randomizer.Normal() * (x[1].Mass - x[0].Mass),
-                GravityScale = x[0].GravityScale + Randomizer.Normal() * (x[1].GravityScale - x[0].GravityScale),
-                SizeScale = x[0].SizeScale + Randomizer.Normal() * (x[1].SizeScale - x[0].SizeScale),
-            })
-            );
+                Angle = parent1.Angle + Randomizer.Normal() * (parent2.Angle - parent1.Angle),
+                InitialVelocity = parent1.InitialVelocity + Randomizer.Normal() * (parent2.InitialVelocity - parent1.InitialVelocity),
+                Mass = parent1.Mass + Randomizer.Normal() * (parent2.Mass - parent1.Mass),
+                GravityScale = parent1.GravityScale + Randomizer.Normal() * (parent2.GravityScale - parent1.GravityScale),
+                SizeScale = parent1.SizeScale + Randomizer.Normal() * (parent2.SizeScale - parent1.SizeScale),
+            };
+
+            newGeneration.Add(newAgent);
         }
 
-        return new_generation;
+        return newGeneration;
     }
 
     private static IEnumerable<BallData> Roulette(IEnumerable<BallData> pool, int amount)
