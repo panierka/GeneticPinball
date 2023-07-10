@@ -4,7 +4,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace GeneticPinball.Scripts.Agents;
 
 [GlobalClass]
@@ -15,6 +14,11 @@ public partial class BallManager : Node2D
 
 	[Signal]
 	public delegate void OnCurrentAmountOfBallsChangedEventHandler(int amount);
+
+	[Signal]
+	public delegate void OnLastBallFinishedEventHandler(Godot.Collections.Array<int> scores);
+
+	private Godot.Collections.Array<int> scores = new();
 
 	private int currentAmountOfBalls;
 	
@@ -33,10 +37,13 @@ public partial class BallManager : Node2D
 
 	public void SpawnBalls(IEnumerable<BallParameters> ballDatas)
 	{
-		BallsUiController.Instance.Clear();
+        var size = ballDatas.Count();
 
-		var size = ballDatas.Count();
-		ballDatas
+		GD.Print(string.Join(", ", scores));
+		scores = new(Enumerable.Repeat(0, size));
+        BallsUiController.Instance.Clear();
+
+        ballDatas
 			.Zip(Enumerable.Range(1, size))
 			.Select(x => new
 			{
@@ -70,12 +77,20 @@ public partial class BallManager : Node2D
 
 		AddChild(ball);
 		ball.Initialize(id, parameters);
+
 		ball.OnBallSimulationFinished += RegisterBallFinish;
-		return ball;
+
+        return ball;
 	}
 
-	private void RegisterBallFinish(int ballScore)
+	private void RegisterBallFinish(int id, int ballScore)
 	{
 		CurrentAmountOfBalls--;
+		scores[id - 1] = ballScore;
+
+		if (CurrentAmountOfBalls == 0)
+		{
+			EmitSignal(SignalName.OnLastBallFinished, scores);
+		}
 	}
 }

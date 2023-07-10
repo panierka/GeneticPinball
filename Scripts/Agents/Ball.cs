@@ -13,7 +13,7 @@ public partial class Ball : Node2D
     public delegate void OnScoreChangedEventHandler(int score);
     
     [Signal]
-	public delegate void OnBallSimulationFinishedEventHandler(int score);
+	public delegate void OnBallSimulationFinishedEventHandler(int id, int score);
 
 	private int score;
 	public int Id { get; private set; }
@@ -60,7 +60,12 @@ public partial class Ball : Node2D
 
 	public void FinishSimulation()
 	{
-		EmitSignal(SignalName.OnBallSimulationFinished, Score);
+		CallDeferred(MethodName.EmitFinishSignal);
         QueueFree();
 	}
+
+	private void EmitFinishSignal()
+	{
+        EmitSignal(SignalName.OnBallSimulationFinished, Id, Score);
+    }
 }

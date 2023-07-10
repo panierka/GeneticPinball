@@ -33,8 +33,8 @@ public partial class BallsUiController : Control
         ballProfileUi.Position = Vector2.Down * positionY;
 
         AddChild(ballProfileUi);
-
-        ball.OnBallSimulationFinished += _ =>
+        
+        ball.OnBallSimulationFinished += (_, _1) =>
         {
             ballProfileUi?.Disable();
         };

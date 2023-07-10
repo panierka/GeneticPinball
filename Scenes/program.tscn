@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxxo4r7cx7ukq"]
+[gd_scene load_steps=2 format=3 uid="uid://dxxo4r7cx7ukq"]
 
 [ext_resource type="PackedScene" uid="uid://bvkgbbml1nhs8" path="res://Scenes/simulation.tscn" id="1_8w7it"]
-[ext_resource type="Script" path="res://Scripts/Debugging/debug_simulation_launcher.gd" id="2_m1stt"]
 
 [node name="Program" type="Node2D"]
 
 [node name="Simulation" parent="." instance=ExtResource("1_8w7it")]
 unique_name_in_owner = true
-
-[node name="DebugSimulationLauncher" type="Node" parent="."]
-script = ExtResource("2_m1stt")

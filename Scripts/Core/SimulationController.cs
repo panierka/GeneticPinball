@@ -2,6 +2,9 @@ using GeneticPinball.Scripts.Agents;
 using GeneticPinball.Scripts.Generations;
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GeneticPinball.Scripts.Core;
 
@@ -16,12 +19,14 @@ public partial class SimulationController : Node2D
 
 	public override void _Ready()
 	{
-		StartNextIteration();
+		StartNextIteration(null);
+
+		ballManager.OnLastBallFinished += StartNextIteration;
 	}
 
-	public void StartNextIteration()
+	public void StartNextIteration(IEnumerable<int> scores)
 	{
-		var ballDatasGeneration = generationProvider.GetGeneration(null);
+		var ballDatasGeneration = generationProvider.GetGeneration(scores?.ToList());
 		ballManager.SpawnBalls(ballDatasGeneration);
 	}
 }
