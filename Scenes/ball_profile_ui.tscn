@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0htvgoahlmmp"]
+[gd_scene load_steps=3 format=3 uid="uid://b0htvgoahlmmp"]
 
 [ext_resource type="Script" path="res://Scripts/Visual/BallProfileUi.cs" id="1_3c8c3"]
 
-[node name="BallProfileUi" type="Control" node_paths=PackedStringArray("scoreLabel", "colorRect")]
+[sub_resource type="LabelSettings" id="LabelSettings_dkh0b"]
+
+[node name="BallProfileUi" type="Control" node_paths=PackedStringArray("scoreLabel", "idColorRect", "backgroundColorRect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +15,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3c8c3")
 scoreLabel = NodePath("ScoreLabel")
-colorRect = NodePath("Color")
+idColorRect = NodePath("Color")
+backgroundColorRect = NodePath("Background")
+disabledBackgroundColor = Color(0.160784, 0.160784, 0.160784, 1)
+disabledTextColor = Color(0.337255, 0.337255, 0.337255, 1)
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 232.0
@@ -30,3 +35,4 @@ offset_left = 32.0
 offset_right = 224.0
 offset_bottom = 26.0
 text = "Score: 1234"
+label_settings = SubResource("LabelSettings_dkh0b")

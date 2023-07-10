@@ -1,5 +1,6 @@
 using GeneticPinball.Scripts.Agents;
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 
@@ -32,6 +33,11 @@ public partial class BallsUiController : Control
         ballProfileUi.Position = Vector2.Down * positionY;
 
         AddChild(ballProfileUi);
+
+        ball.OnBallSimulationFinished += _ =>
+        {
+            ballProfileUi?.Disable();
+        };
 
         ball.OnScoreChanged += score =>
         {

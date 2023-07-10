@@ -13,16 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://b0htvgoahlmmp" path="res://Scenes/ball_profile_ui.tscn" id="11_7lpsd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dgmu"]
-size = Vector2(1473.5, 20)
+size = Vector2(1896, 547)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00u4u"]
-size = Vector2(1484, 20)
+size = Vector2(1920, 580)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22aq0"]
-size = Vector2(94, 880)
+size = Vector2(774, 1584)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn06s"]
-size = Vector2(64, 892)
+size = Vector2(765, 1704)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ruop"]
 font_size = 24
@@ -275,21 +275,21 @@ position = Vector2(416, 672)
 script = ExtResource("8_hvqpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Upper"]
-position = Vector2(707.25, -31)
+position = Vector2(756, -294.5)
 shape = SubResource("RectangleShape2D_1dgmu")
 
 [node name="Lower" type="Area2D" parent="Borders"]
 script = ExtResource("8_hvqpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Lower"]
-position = Vector2(710, 822)
+position = Vector2(720, 1102)
 shape = SubResource("RectangleShape2D_00u4u")
 
 [node name="Left" type="Area2D" parent="Borders"]
 script = ExtResource("8_hvqpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
-position = Vector2(-57, 408)
+position = Vector2(-397, 416)
 shape = SubResource("RectangleShape2D_22aq0")
 
 [node name="Right" type="Area2D" parent="Borders"]
@@ -297,7 +297,7 @@ position = Vector2(-256, 0)
 script = ExtResource("8_hvqpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
-position = Vector2(1459, 408)
+position = Vector2(1809.5, 468)
 shape = SubResource("RectangleShape2D_vn06s")
 
 [node name="UI" type="Control" parent="."]

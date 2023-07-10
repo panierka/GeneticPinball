@@ -11,12 +11,12 @@ public partial class Ball : Node2D
 
     [Signal]
     public delegate void OnScoreChangedEventHandler(int score);
-
+    
     [Signal]
 	public delegate void OnBallSimulationFinishedEventHandler(int score);
 
 	private int score;
-	private int id;
+	public int Id { get; private set; }
     
     public int Score 
 	{ 
@@ -30,7 +30,7 @@ public partial class Ball : Node2D
 
     public void Initialize(int id, BallParameters parameters)
 	{
-		this.id = id;
+		this.Id = id;
 
         var direction = parameters.Direction.Normalized();
 		var initialVelocity = direction * parameters.InitialVelocity;
