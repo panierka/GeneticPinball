@@ -15,7 +15,7 @@ namespace GeneticPinball.Scripts.Generations
 		[Export]
 		private int size;
 
-		public override List<BallParameters> GetGeneration(List<float> _)
+		public override List<BallParameters> GetGeneration(List<int> _)
 		{
 			return Enumerable
 				.Repeat(0, size)

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GeneticPinball.Scripts.Generations;
 
-public partial class GeneticGenerationProvider : BallGenerationProviderNode
+public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
 {
     [Export]
     private int size;
@@ -20,11 +20,11 @@ public partial class GeneticGenerationProvider : BallGenerationProviderNode
     public float MutationProbability { get; set; }
 
     [Export]
-    public float CrossingProbability { get; set; }
+    public int EliteClonesAmount { get; set; }
 
     private List<BallParameters>? currentGeneration = null;
 
-    public override List<BallParameters> GetGeneration(List<float> scores)
+    public override List<BallParameters> GetGeneration(List<int> scores)
     {
         if (currentGeneration is null)
         {
@@ -35,11 +35,23 @@ public partial class GeneticGenerationProvider : BallGenerationProviderNode
 
             return currentGeneration;
         }
-        
+
+        var clones = currentGeneration
+            .Zip(scores)
+            .OrderByDescending(x => x.Second)
+            .Take(EliteClonesAmount)
+            .Select(x => x.First);
+
+        var crossed = Cross(currentGeneration, scores, size - EliteClonesAmount);
+        var mutated = Mutate(crossed);
+        var nextGeneration = clones.Concat(mutated);
+
+        currentGeneration = nextGeneration.ToList();
+
         return currentGeneration;
     }
 
-    private static List<BallParameters> GetMutated(List<BallParameters> parameters)
+    private static List<BallParameters> Mutate(List<BallParameters> parameters)
     {
         return new List<BallParameters>(parameters)
             .Select(x =>
@@ -56,7 +68,7 @@ public partial class GeneticGenerationProvider : BallGenerationProviderNode
             .ToList();
     }
 
-    private static List<BallParameters> GetCrossed(List<BallParameters> parameters)
+    private static List<BallParameters> Cross(List<BallParameters> parameters, List<int> scores, int amount)
     {
         throw new NotImplementedException();
     }
