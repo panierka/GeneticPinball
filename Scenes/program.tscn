@@ -1,61 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxxo4r7cx7ukq"]
+[gd_scene load_steps=3 format=3 uid="uid://dxxo4r7cx7ukq"]
 
 [ext_resource type="PackedScene" uid="uid://bvkgbbml1nhs8" path="res://Scenes/simulation.tscn" id="1_8w7it"]
 [ext_resource type="Script" path="res://Scripts/Debugging/debug_simulation_launcher.gd" id="2_m1stt"]
-[ext_resource type="Script" path="res://Scripts/Board/Border.cs" id="3_v7ki4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hd7d"]
-size = Vector2(1473.5, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j21by"]
-size = Vector2(1484, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ykx"]
-size = Vector2(94, 880)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_on7cp"]
-size = Vector2(64, 892)
 
 [node name="Program" type="Node2D"]
 
 [node name="Simulation" parent="." instance=ExtResource("1_8w7it")]
 unique_name_in_owner = true
-position = Vector2(8, -14)
 
 [node name="DebugSimulationLauncher" type="Node" parent="."]
 script = ExtResource("2_m1stt")
-
-[node name="Borders" type="Node2D" parent="."]
-
-[node name="Upper" type="Area2D" parent="Borders"]
-script = ExtResource("3_v7ki4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Upper"]
-position = Vector2(707.25, -31)
-shape = SubResource("RectangleShape2D_1hd7d")
-
-[node name="Lower" type="Area2D" parent="Borders"]
-script = ExtResource("3_v7ki4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Lower"]
-position = Vector2(710, 822)
-shape = SubResource("RectangleShape2D_j21by")
-
-[node name="Left" type="Area2D" parent="Borders"]
-script = ExtResource("3_v7ki4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
-position = Vector2(-57, 408)
-shape = SubResource("RectangleShape2D_l6ykx")
-
-[node name="Right" type="Area2D" parent="Borders"]
-script = ExtResource("3_v7ki4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
-position = Vector2(1459, 408)
-shape = SubResource("RectangleShape2D_on7cp")
-
-[connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]
-[connection signal="body_entered" from="Borders/Lower" to="Borders/Lower" method="ReactToBall"]
-[connection signal="body_entered" from="Borders/Left" to="Borders/Left" method="ReactToBall"]
-[connection signal="body_entered" from="Borders/Right" to="Borders/Right" method="ReactToBall"]

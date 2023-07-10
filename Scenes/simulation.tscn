@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=15 format=3 uid="uid://bvkgbbml1nhs8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
@@ -7,7 +7,20 @@
 [ext_resource type="Script" path="res://Scripts/Visual/ball_amount_ui.gd" id="5_lxm4j"]
 [ext_resource type="PackedScene" uid="uid://cggjr03n541bc" path="res://Scenes/bumper_big.tscn" id="6_nrc0a"]
 [ext_resource type="PackedScene" uid="uid://inhschju0s3y" path="res://Scenes/bumper_medium.tscn" id="7_1cows"]
+[ext_resource type="Script" path="res://Scripts/Board/Border.cs" id="8_hvqpb"]
 [ext_resource type="PackedScene" uid="uid://d2arhr5ayh046" path="res://Scenes/bumper_small.tscn" id="8_p7lgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dgmu"]
+size = Vector2(1473.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00u4u"]
+size = Vector2(1484, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22aq0"]
+size = Vector2(94, 880)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn06s"]
+size = Vector2(64, 892)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ruop"]
 font_size = 24
@@ -18,7 +31,7 @@ ballManager = NodePath("BallManager")
 generationProvider = NodePath("BallGenerationProviderNode")
 
 [node name="BallManager" type="Node2D" parent="."]
-position = Vector2(736, 736)
+position = Vector2(584, 624)
 script = ExtResource("1_regys")
 packedBall = ExtResource("2_la58t")
 
@@ -26,23 +39,8 @@ packedBall = ExtResource("2_la58t")
 script = ExtResource("4_8etlk")
 size = 20
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 48.0
-
-[node name="Label" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 184.0
-offset_bottom = 23.0
-text = "BALLS LEFT:"
-label_settings = SubResource("LabelSettings_7ruop")
-script = ExtResource("5_lxm4j")
-
 [node name="Board" type="Node2D" parent="."]
+position = Vector2(-152, -40)
 
 [node name="BumperBig" parent="Board" instance=ExtResource("6_nrc0a")]
 position = Vector2(352, 96)
@@ -269,4 +267,65 @@ position = Vector2(416, 544)
 [node name="BumperSmall23" parent="Board" instance=ExtResource("8_p7lgt")]
 position = Vector2(416, 672)
 
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Upper" type="Area2D" parent="Borders"]
+script = ExtResource("8_hvqpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Upper"]
+position = Vector2(707.25, -31)
+shape = SubResource("RectangleShape2D_1dgmu")
+
+[node name="Lower" type="Area2D" parent="Borders"]
+script = ExtResource("8_hvqpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Lower"]
+position = Vector2(710, 822)
+shape = SubResource("RectangleShape2D_00u4u")
+
+[node name="Left" type="Area2D" parent="Borders"]
+script = ExtResource("8_hvqpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
+position = Vector2(-57, 408)
+shape = SubResource("RectangleShape2D_22aq0")
+
+[node name="Right" type="Area2D" parent="Borders"]
+position = Vector2(-256, 0)
+script = ExtResource("8_hvqpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
+position = Vector2(1459, 408)
+shape = SubResource("RectangleShape2D_vn06s")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = -24.0
+offset_right = -40.0
+offset_bottom = 16.0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 16.0
+offset_right = 1504.0
+offset_bottom = 864.0
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1256.0
+offset_top = 32.0
+offset_right = 1440.0
+offset_bottom = 69.0
+text = "BALLS LEFT:"
+label_settings = SubResource("LabelSettings_7ruop")
+script = ExtResource("5_lxm4j")
+
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]
+[connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]
+[connection signal="body_entered" from="Borders/Lower" to="Borders/Lower" method="ReactToBall"]
+[connection signal="body_entered" from="Borders/Left" to="Borders/Left" method="ReactToBall"]
+[connection signal="body_entered" from="Borders/Right" to="Borders/Right" method="ReactToBall"]
