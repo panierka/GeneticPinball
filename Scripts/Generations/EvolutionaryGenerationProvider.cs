@@ -131,7 +131,7 @@ public partial class EvolutionaryGenerationProvider : BallGenerationProviderNode
     private static IEnumerable<BallData> Roulette(IEnumerable<BallData> pool, int amount)
     {
         return pool
-            .OrderByDescending(x => x.Score * Randomizer.Range(0, 1))
+            .OrderByDescending(x => (1 + x.Score) * Randomizer.Range(0, 1))
             .Take(2);
     }
 

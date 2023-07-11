@@ -5,7 +5,6 @@
 
 [node name="BumperMedium" instance=ExtResource("1_hd4m7")]
 bumpingPower = 660.0
-addedScore = 25
 
 [node name="Sprite2D" parent="Area2D" index="0"]
 self_modulate = Color(0.45098, 0.45098, 0.45098, 1)

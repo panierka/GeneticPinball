@@ -5,6 +5,7 @@
 
 [node name="BumperSmall" instance=ExtResource("1_0if88")]
 bumpingPower = 300.0
+addedScore = 5
 
 [node name="Sprite2D" parent="Area2D" index="0"]
 self_modulate = Color(0.211765, 0.211765, 0.211765, 1)

@@ -1,0 +1,137 @@
+[gd_scene load_steps=2 format=3 uid="uid://gbtxbetb6yp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdxn2"]
+font_color = Color(0.980392, 0.513726, 0.121569, 1)
+
+[node name="ExtremumDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Score"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Score:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")
+
+[node name="Angle" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="Angle"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Angle:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="Angle"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")
+
+[node name="InitialVelocity" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="InitialVelocity"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Velocity:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="InitialVelocity"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")
+
+[node name="Gravity" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 72.0
+offset_right = 40.0
+offset_bottom = 112.0
+
+[node name="Label" type="Label" parent="Gravity"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Gravity:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="Gravity"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")
+
+[node name="Mass" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 96.0
+offset_right = 40.0
+offset_bottom = 136.0
+
+[node name="Label" type="Label" parent="Mass"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Mass:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="Mass"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")
+
+[node name="Size" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="Size"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Size:"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="Size"]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "123"
+label_settings = SubResource("LabelSettings_vdxn2")

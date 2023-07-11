@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2arhr5ayh046" path="res://Scenes/bumper_small.tscn" id="8_p7lgt"]
 [ext_resource type="Script" path="res://Scripts/Visual/BallsUiController.cs" id="10_iusdq"]
 [ext_resource type="PackedScene" uid="uid://b0htvgoahlmmp" path="res://Scenes/ball_profile_ui.tscn" id="11_7lpsd"]
-[ext_resource type="PackedScene" uid="uid://ddff1cm2866aw" path="res://Scenes/extremum_ui.tscn" id="12_i50qs"]
+[ext_resource type="PackedScene" uid="uid://gbtxbetb6yp3" path="res://Scenes/extremum_display.tscn" id="12_q4gti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dgmu"]
 size = Vector2(1896, 547)
@@ -339,12 +339,12 @@ packedBallProfileUi = ExtResource("11_7lpsd")
 verticalOffset = 16
 distanceBetweenProfileUis = 32
 
-[node name="extremum_ui" parent="UI" instance=ExtResource("12_i50qs")]
+[node name="ExtremumDisplay" parent="UI" instance=ExtResource("12_q4gti")]
 layout_mode = 1
-offset_left = 1192.0
-offset_top = 704.0
-offset_right = 1192.0
-offset_bottom = 704.0
+offset_left = 1240.0
+offset_top = 664.0
+offset_right = 1240.0
+offset_bottom = 664.0
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]
 [connection signal="body_entered" from="Borders/Upper" to="Borders/Upper" method="ReactToBall"]
