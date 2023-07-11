@@ -324,7 +324,7 @@ offset_left = 1256.0
 offset_top = 32.0
 offset_right = 1440.0
 offset_bottom = 69.0
-text = "BALLS LEFT:"
+text = "Balls left:"
 label_settings = SubResource("LabelSettings_7ruop")
 script = ExtResource("5_lxm4j")
 

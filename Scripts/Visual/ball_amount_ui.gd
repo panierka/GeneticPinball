@@ -2,4 +2,4 @@ extends Label
 
 
 func update(amount):
-	self.text = 'BALLS LEFT: %d' % amount 
+	self.text = 'Balls left: %d' % amount 

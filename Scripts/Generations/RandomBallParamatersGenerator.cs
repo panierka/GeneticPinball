@@ -19,10 +19,10 @@ namespace GeneticPinball.Scripts.Generations
 		public const float MIN_SIZE = 0.5f;
 		public const float MAX_SIZE = 2;
 
-		public const float MIN_GRAVITY = 0.1f;
+		public const float MIN_GRAVITY = 0.2f;
 		public const float MAX_GRAVITY = 3f;
 
-		public const float MIN_MASS = 0.2f;
+		public const float MIN_MASS = 0.75f;
 		public const float MAX_MASS = 2f;
 
 		public static BallParameters Generate()
