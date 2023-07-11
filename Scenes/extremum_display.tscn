@@ -1,15 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://gbtxbetb6yp3"]
+[gd_scene load_steps=3 format=3 uid="uid://gbtxbetb6yp3"]
+
+[ext_resource type="Script" path="res://Scripts/Visual/ExtremumDisplay.cs" id="1_fm35q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdxn2"]
 font_color = Color(0.980392, 0.513726, 0.121569, 1)
 
-[node name="ExtremumDisplay" type="Control"]
+[node name="ExtremumDisplay" type="Control" node_paths=PackedStringArray("scoreLabel", "angleLabel", "velocityLabel", "gravityLabel", "massLabel", "sizeLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fm35q")
+scoreLabel = NodePath("Score/Value")
+angleLabel = NodePath("Angle/Value")
+velocityLabel = NodePath("InitialVelocity/Value")
+gravityLabel = NodePath("Gravity/Value")
+massLabel = NodePath("Mass/Value")
+sizeLabel = NodePath("Size/Value")
 
 [node name="Score" type="Control" parent="."]
 anchors_preset = 0
@@ -18,7 +27,8 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Score"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
 text = "Score:"
 horizontal_alignment = 2
@@ -39,9 +49,10 @@ offset_bottom = 64.0
 
 [node name="Label" type="Label" parent="Angle"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
-text = "Angle:"
+text = "Launch angle:"
 horizontal_alignment = 2
 
 [node name="Value" type="Label" parent="Angle"]
@@ -60,9 +71,10 @@ offset_bottom = 88.0
 
 [node name="Label" type="Label" parent="InitialVelocity"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
-text = "Velocity:"
+text = "Initial velocity:"
 horizontal_alignment = 2
 
 [node name="Value" type="Label" parent="InitialVelocity"]
@@ -81,9 +93,10 @@ offset_bottom = 112.0
 
 [node name="Label" type="Label" parent="Gravity"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
-text = "Gravity:"
+text = "Gravity scale:"
 horizontal_alignment = 2
 
 [node name="Value" type="Label" parent="Gravity"]
@@ -102,7 +115,8 @@ offset_bottom = 136.0
 
 [node name="Label" type="Label" parent="Mass"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
 text = "Mass:"
 horizontal_alignment = 2
@@ -123,9 +137,10 @@ offset_bottom = 160.0
 
 [node name="Label" type="Label" parent="Size"]
 layout_mode = 0
-offset_right = 96.0
+offset_left = -16.0
+offset_right = 98.0
 offset_bottom = 26.0
-text = "Size:"
+text = "Size scale:"
 horizontal_alignment = 2
 
 [node name="Value" type="Label" parent="Size"]

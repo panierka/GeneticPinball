@@ -19,6 +19,7 @@ public partial class BallManager : Node2D
 	public delegate void OnLastBallFinishedEventHandler(Godot.Collections.Array<int> scores);
 
 	private Godot.Collections.Array<int> scores = new();
+	private List<BallParameters> currentBallDatas = new();
 
 	private int currentAmountOfBalls;
 	
@@ -41,6 +42,7 @@ public partial class BallManager : Node2D
 
 		scores = new(Enumerable.Repeat(0, size));
         BallsUiController.Instance.Clear();
+		currentBallDatas.Clear();
 
         ballDatas
 			.Zip(Enumerable.Range(1, size))
@@ -65,6 +67,7 @@ public partial class BallManager : Node2D
 				};
 
                 BallsUiController.Instance.RegisterBallProfile(ball, profile);
+				currentBallDatas.Add(x.Data);
             });
 
 		CurrentAmountOfBalls += size;
@@ -74,8 +77,8 @@ public partial class BallManager : Node2D
 	{
 		var ball = packedBall.Instantiate<Ball>();
 
-		AddChild(ball);
-		ball.Initialize(id, parameters);
+		GetTree().CreateTimer(id * 0.12).Timeout += () => AddChild(ball);
+        ball.Initialize(id, parameters);
 
 		ball.OnBallSimulationFinished += RegisterBallFinish;
 
@@ -84,10 +87,15 @@ public partial class BallManager : Node2D
 
 	private void RegisterBallFinish(int id, int ballScore)
 	{
-		CurrentAmountOfBalls--;
-		scores[id - 1] = ballScore;
+		var index = id - 1;
 
-		if (CurrentAmountOfBalls == 0)
+		CurrentAmountOfBalls--;
+		scores[index] = ballScore;
+
+		var parameters = currentBallDatas[index];
+        ExtremumDisplay.Instance.TryUpdateBest(ballScore, parameters);
+
+        if (CurrentAmountOfBalls == 0)
 		{
 			EmitSignal(SignalName.OnLastBallFinished, scores);
 		}

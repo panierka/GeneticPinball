@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvkgbbml1nhs8"]
+[gd_scene load_steps=19 format=3 uid="uid://bvkgbbml1nhs8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/SimulationController.cs" id="1_h1qxx"]
 [ext_resource type="Script" path="res://Scripts/Agents/BallManager.cs" id="1_regys"]
+[ext_resource type="Texture2D" uid="uid://cuwv2yxg4ggar" path="res://Textures/circle.png" id="2_0i6sn"]
 [ext_resource type="PackedScene" uid="uid://lol60knq7ctd" path="res://Scenes/ball.tscn" id="2_la58t"]
 [ext_resource type="Script" path="res://Scripts/Generations/EvolutionaryGenerationProvider.cs" id="4_2wpdq"]
 [ext_resource type="Script" path="res://Scripts/Visual/ball_amount_ui.gd" id="5_lxm4j"]
@@ -33,6 +34,12 @@ script = ExtResource("1_h1qxx")
 ballManager = NodePath("BallManager")
 generationProvider = NodePath("BallGenerationProviderNode")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.121569, 0.121569, 0.121569, 1)
+position = Vector2(584, 632)
+scale = Vector2(0.200001, 0.160001)
+texture = ExtResource("2_0i6sn")
+
 [node name="BallManager" type="Node2D" parent="."]
 position = Vector2(584, 624)
 script = ExtResource("1_regys")
@@ -41,7 +48,7 @@ packedBall = ExtResource("2_la58t")
 [node name="BallGenerationProviderNode" type="Node2D" parent="."]
 script = ExtResource("4_2wpdq")
 size = 16
-MutationProbability = 0.15
+MutationProbability = 0.66
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(-152, -40)
@@ -341,9 +348,9 @@ distanceBetweenProfileUis = 32
 
 [node name="ExtremumDisplay" parent="UI" instance=ExtResource("12_q4gti")]
 layout_mode = 1
-offset_left = 1240.0
+offset_left = 1272.0
 offset_top = 664.0
-offset_right = 1240.0
+offset_right = 1272.0
 offset_bottom = 664.0
 
 [connection signal="OnCurrentAmountOfBallsChanged" from="BallManager" to="UI/Label" method="update"]
