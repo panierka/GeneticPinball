@@ -48,7 +48,9 @@ packedBall = ExtResource("2_la58t")
 [node name="BallGenerationProviderNode" type="Node2D" parent="."]
 script = ExtResource("4_2wpdq")
 size = 16
-MutationProbability = 0.66
+MutationProbability = 0.75
+EliteClonesAmount = 1
+MutationCoefficient = 0.6
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(-152, -40)
